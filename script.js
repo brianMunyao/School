@@ -30,6 +30,37 @@ nav[0].style.background = '#005d92';
 main[0].style.display = 'block';
 prevLink = nav[0];
 
+//popup
+function popUp(type, info) {
+    let iconsStats = [
+        { i: 'fa fa-check-circle', color: '#30a84f' },
+        { i: 'fas fa-exclamation-triangle', color: '#f0ad4e' },
+        { i: 'fas fa-times-circle', color: '#d9534f' },
+    ];
+
+    let modalBody = document.createElement('div');
+    modalBody.className = 'modalBody';
+    modalBody.addEventListener('click', () => {
+        modalBody.remove();
+    });
+
+    let modalInner = document.createElement('div');
+    modalInner.className = 'modalInner';
+
+    let icon = document.createElement('i');
+    icon.className = iconsStats[type].i;
+    icon.style.color = iconsStats[type].color;
+    modalInner.appendChild(icon);
+
+    let infomation = document.createElement('p');
+    infomation.className = 'modalInfo';
+    infomation.innerHTML = info;
+    modalInner.appendChild(infomation);
+
+    modalBody.appendChild(modalInner);
+    document.querySelector('body').appendChild(modalBody);
+}
+
 //make quiz
 document.querySelector('div.makeQuiz').addEventListener('click', () => {
     nav[2].click();
@@ -235,7 +266,7 @@ function preview() {
     } = savePreviewFunc();
 
     if (!isCorrect) {
-        alert('Not ready to preview');
+        popUp(1, 'Some Infomation is missing');
     } else {
         let previewContainer = document.createElement('div');
         previewContainer.className = 'previewContainer';
@@ -298,8 +329,8 @@ function save() {
     } = savePreviewFunc();
 
     if (isCorrect) {
-        alert('saved');
+        popUp(0, 'Quiz saved');
     } else {
-        alert('Not saved');
+        popUp(2, 'Some Information is missing');
     }
 }

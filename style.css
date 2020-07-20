@@ -585,3 +585,56 @@ div.previewContainer div.innerPreviewContainer div.prevQuestion div.answers {
 div.previewContainer div.innerPreviewContainer div.prevQuestion div.answers label input {
     margin: 8px;
 }
+
+
+/*
+    pop ups / modals
+*/
+
+div.modalBody {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #00000070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.modalBody div.modalInner {
+    position: relative;
+    background: #fff;
+    min-height: 250px;
+    width: 350px;
+    padding: 20px 10px;
+    border-radius: 20px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalPop .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .2s linear;
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.2);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+div.modalBody div.modalInner i {
+    font-size: 130px;
+    margin-bottom: 20px;
+    transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+div.modalBody div.modalInner p {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
